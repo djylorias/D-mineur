@@ -5,6 +5,7 @@ public enum FrameState {
     NUMBER,
     MINE,
     FLAGED_NUMBER,
-    FLAGED_MINE
+    FLAGED_MINE,
+    BORDER
 
 }

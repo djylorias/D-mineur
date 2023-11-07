@@ -4,6 +4,11 @@ public class Frame {
     
     private Coordinate coord;
     private FrameState state;
+    public int mineCounter;
+
+    public Frame(int x, int y){
+        this(new Coordinate(x, y), null);
+    }
 
     public Frame(int x, int y, FrameState state){
         this(new Coordinate(x, y), state);
@@ -11,6 +16,11 @@ public class Frame {
 
     public Frame(Coordinate coord, FrameState state){
         this.coord = coord;
+        this.state = state;
+        this.mineCounter = 0;
+    }
+
+    public void setState(FrameState state) {
         this.state = state;
     }
 
