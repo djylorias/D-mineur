@@ -4,7 +4,7 @@ import map.Map;
 import view.DemFrame;
 
 /**
- * @version 0.1
+ * @version 0.2
  */
 
 public class Main {
