@@ -1,26 +1,26 @@
 package map;
 
-public class Frame {
+public class Cell {
     
     private Coordinate coord;
-    private FrameState state;
+    private CellState state;
     public int mineCounter;
 
-    public Frame(int x, int y){
+    public Cell(int x, int y){
         this(new Coordinate(x, y), null);
     }
 
-    public Frame(int x, int y, FrameState state){
+    public Cell(int x, int y, CellState state){
         this(new Coordinate(x, y), state);
     }
 
-    public Frame(Coordinate coord, FrameState state){
+    public Cell(Coordinate coord, CellState state){
         this.coord = coord;
         this.state = state;
         this.mineCounter = 0;
     }
 
-    public void setState(FrameState state) {
+    public void setState(CellState state) {
         this.state = state;
     }
 
@@ -28,11 +28,11 @@ public class Frame {
         return coord;
     }
 
-    public FrameState getState() {
+    public CellState getState() {
         return state;
     }
 
-    public boolean equals(Frame o){
+    public boolean equals(Cell o){
         if(o==null) return false;
         if(!getCoord().equals(o.getCoord())) return false;
         if(getState()!=o.getState()) return false;

@@ -1,16 +1,16 @@
 package demineur;
 
 import map.Map;
-import view.DemFrame;
+import view.Game.GameFrame;
 
 /**
- * @version 0.2
+ * @version 0.3
  */
 
 public class Main {
     public static void main(String[] args) {
         Map map = new Map();
-        DemFrame frame = new DemFrame(map);
+        GameFrame frame = new GameFrame(map);
         frame.show();
     }
 }

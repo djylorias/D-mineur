@@ -1,6 +1,6 @@
 package map;
 
-public enum FrameState {
+public enum CellState {
     
     NUMBER,
     MINE,

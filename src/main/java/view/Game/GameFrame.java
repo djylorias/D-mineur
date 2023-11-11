@@ -1,37 +1,37 @@
-package view;
+package view.Game;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import map.Frame;
-import map.FrameState;
+import map.Cell;
 import map.Map;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
-public class DemFrame {
+public class GameFrame {
     
     private JFrame frame = null;
 
-    private static final String ICON_FILES_PATH = "ressource/icons/";
-    private static final ImageIcon MINE = new ImageIcon(ICON_FILES_PATH+"mine.png");
-    private static final ImageIcon FLAG = new ImageIcon(ICON_FILES_PATH+"flag.png");
+    private List<GameCell> buttons = new ArrayList<>();
 
-    public DemFrame(Map map){
+    public GameFrame(Map map){
 
         JLabel label = new JLabel();
         label.setText("c'est le jeu du démineur !");
 
         frame = new JFrame();
         frame.setTitle("Démineur");
-        frame.setSize(500,500);
+        frame.setSize(map.getWidth()*50,map.getHeight()*50);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(true);
 
         frame.setLayout(new GridLayout(map.getHeight(), map.getWidth()));
         insertFrames(map);
 
+        System.out.println(frame.getLayout());
+        
         show();
 
     }
@@ -49,14 +49,20 @@ public class DemFrame {
         }
     }
 
-    public JButton createIconedButton(Frame frame){
-        FrameState state = frame.getState();
-        JButton res = new JButton();
-        res.setSize(50, 50);
-        res.addActionListener(e -> System.out.println(frame.mineCounter));
-        if(state.equals(FrameState.NUMBER)) res.setIcon(FLAG);
-        if(state.equals(FrameState.MINE)) res.setIcon(MINE);
+    public GameCell createIconedButton(Cell cell){
+        GameCell res = new GameCell(cell);
+        res.addActionListener(e -> System.out.println(cell.mineCounter));
+        
+        buttons.add(res);
         return res;
+    }
+
+    public static void mineExplode(){
+        
+    }
+
+    public static void numberDiscovered(GameCell gc){
+        System.out.println(gc.getCell().getCoord());
     }
 
 }
