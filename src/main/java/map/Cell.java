@@ -4,6 +4,7 @@ public class Cell {
     
     private Coordinate coord;
     private CellState state;
+    private boolean discovered = false;
     public int mineCounter;
 
     public Cell(int x, int y){
@@ -20,6 +21,10 @@ public class Cell {
         this.mineCounter = 0;
     }
 
+    public void discovered(){
+        discovered=true;
+    }
+
     public void setState(CellState state) {
         this.state = state;
     }
@@ -30,6 +35,10 @@ public class Cell {
 
     public CellState getState() {
         return state;
+    }
+
+    public boolean isDiscovered() {
+        return discovered;
     }
 
     public boolean equals(Cell o){

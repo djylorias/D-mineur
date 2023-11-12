@@ -107,6 +107,10 @@ public class Map {
         else return map[coord.getX()][coord.getY()];
     }
 
+    public void discovered(Coordinate coord){
+        map[coord.getX()][coord.getY()].discovered();
+    }
+
     public int getHeight() {
         return height;
     }

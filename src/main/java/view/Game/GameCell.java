@@ -1,10 +1,12 @@
 package view.Game;
 
-import java.awt.event.MouseListener;
+import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+import Exceptions.CantBeFLaggedException;
+import Exceptions.CantBeUnflaggedException;
 import map.Cell;
 import map.CellState;
 import view.Listeners.MineActionListener;
@@ -14,6 +16,7 @@ import view.Listeners.NumberMouseListener;
 public class GameCell extends JButton{
 
     private Cell cell;
+    private Font font = null;
 
     private static final String ICON_FILES_PATH = "ressource/icons/";
     private static final ImageIcon MINE = new ImageIcon(ICON_FILES_PATH+"mine50.png");
@@ -33,7 +36,6 @@ public class GameCell extends JButton{
     }
 
     private void initNumber(){
-        //this.setIcon(FLAG);
         this.addActionListener(new NumberActionListener(this));
         this.addMouseListener(new NumberMouseListener(this));
     }
@@ -47,10 +49,16 @@ public class GameCell extends JButton{
 
     }
 
-    public void setFlag(){
-        if(this.cell.getState()==CellState.NUMBER) this.cell.setState(CellState.FLAGED_NUMBER);
-        else this.cell.setState(CellState.FLAGED_MINE);
-        this.setIcon(FLAG);
+    public void updateFlag() throws CantBeUnflaggedException, CantBeFLaggedException{
+        CellState current_state = this.cell.getState();
+        if(CellState.isFlagged(current_state)){
+            this.cell.setState(CellState.getUnflaggedOf(current_state));
+            this.setIcon(null);
+        }
+        else{
+            this.cell.setState(CellState.getFlaggedOf(current_state));
+            this.setIcon(FLAG);
+        }
     }
 
     public void clearFlag(){

@@ -4,7 +4,7 @@ import map.Map;
 import view.Game.GameFrame;
 
 /**
- * @version 0.3
+ * @version 0.4
  */
 
 public class Main {

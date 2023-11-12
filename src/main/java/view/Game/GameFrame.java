@@ -31,8 +31,6 @@ public class GameFrame {
         insertFrames(map);
 
         System.out.println(frame.getLayout());
-        
-        show();
 
     }
 

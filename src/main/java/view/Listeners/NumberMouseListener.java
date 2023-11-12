@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.SwingUtilities;
 
+import Exceptions.CantBeFLaggedException;
+import Exceptions.CantBeUnflaggedException;
 import view.Game.GameCell;
 
 public class NumberMouseListener implements MouseListener{
@@ -17,28 +19,29 @@ public class NumberMouseListener implements MouseListener{
     }
 
     public void mouseClicked(MouseEvent e) {
-        // gc.getModel().setArmed(true);
-        // gc.getModel().setPressed(true);
-        pressed = true;
+        
     }
 
     public void mousePressed(MouseEvent e) {
-        // gc.getModel().setArmed(false);
-        // gc.getModel().setPressed(false);
+        pressed = true;
+    }
+
+    public void mouseReleased(MouseEvent e) {
         if (pressed) {
-            if (SwingUtilities.isRightMouseButton(e)) {
-                gc.setFlag();
+            if (SwingUtilities.isRightMouseButton(e) && gc.getCell().isDiscovered()==false) {
+                try {
+                    gc.updateFlag();
+                } catch (CantBeUnflaggedException | CantBeFLaggedException e1) {
+                    System.out.println(e1.getMessage());
+                }
             }
-            else {
+            else{
+                gc.getCell().discovered();
                 gc.clearFlag();
                 gc.setText(gc.getCell().mineCounter+"");
             }
         }
-            pressed = false;
-    }
-
-    public void mouseReleased(MouseEvent e) {
-        
+        pressed = false;
     }
 
     public void mouseEntered(MouseEvent e) {
