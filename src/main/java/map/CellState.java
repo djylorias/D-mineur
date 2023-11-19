@@ -16,6 +16,10 @@ public enum CellState {
         else return false;
     }
 
+    public static boolean isFlagged(Cell cell){
+        return isFlagged(cell.getState());
+    }
+
     public static CellState getUnflaggedOf(CellState cs) throws CantBeUnflaggedException {
         if(cs==FLAGED_NUMBER) return NUMBER;
         else if(cs==FLAGED_MINE) return MINE;
@@ -26,7 +30,6 @@ public enum CellState {
         if(cs==NUMBER) return FLAGED_NUMBER;
         else if(cs==MINE) return FLAGED_MINE;
         else throw new CantBeFLaggedException("This states can't be flagged");
-
     }
 
 }

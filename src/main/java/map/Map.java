@@ -76,6 +76,7 @@ public class Map {
     private boolean insertMine(Coordinate coord){
         if(canBeMine(getCell(coord))){
             this.map[coord.getX()][coord.getY()].setState(CellState.MINE);
+            increaseProximityCounter(coord);
             return true;
         }
         else return false;
@@ -83,17 +84,28 @@ public class Map {
 
     private boolean canBeMine(Cell cell){
         if(cell.getState()==CellState.BORDER || cell.getState()==CellState.MINE) return false;
-        countProximityBombs(cell);
-        if(cell.mineCounter>=4) return false;
+        if(countProximityBombs(cell)>=4) return false;
         else return true;
     }
 
-    private void countProximityBombs(Cell cell){
+    private int countProximityBombs(Cell cell){
+        int res = 0;
         int x = cell.getCoord().getX();
         int y = cell.getCoord().getY();
         for(int i=x-1;i<x+1;i++){
             for(int j=y-1;j<y+1;j++){
-                if(map[i][j]!=null && map[i][j].getState()==CellState.MINE) cell.mineCounter++;
+                if(map[i][j]!=null && map[i][j].getState()==CellState.MINE) res++;
+            }
+        }
+        return res;
+    }
+
+    private void increaseProximityCounter(Coordinate coord){
+        int x = coord.getX();
+        int y = coord.getY();
+        for(int i=(x-1);i<=(x+1);i++){
+            for(int j=(y-1);j<=(y+1);j++){
+                map[i][j].mineCounter++;
             }
         }
     }

@@ -7,6 +7,7 @@ import javax.swing.SwingUtilities;
 
 import Exceptions.CantBeFLaggedException;
 import Exceptions.CantBeUnflaggedException;
+import map.CellState;
 import view.Game.GameCell;
 
 public class NumberMouseListener implements MouseListener{
@@ -35,7 +36,7 @@ public class NumberMouseListener implements MouseListener{
                     System.out.println(e1.getMessage());
                 }
             }
-            else{
+            else if(CellState.isFlagged(gc.getCell())){
                 gc.getCell().discovered();
                 gc.clearFlag();
                 gc.setText(gc.getCell().mineCounter+"");
