@@ -1,4 +1,4 @@
-package map;
+package main.java.model;
 
 public class Coordinate {
     
