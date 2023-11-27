@@ -1,12 +1,13 @@
 package main.java.model.Cells;
 
+import main.java.MVC.Subject;
 import main.java.model.Coordinate;
 
 /**
  * A blank cell wich is none of number, mine or border.
  * @since 0.6
  */
-public abstract class BlankCell implements Cell {
+public abstract class BlankCell extends Subject implements Cell {
     
     protected Coordinate coord = null;
     private boolean discovered = false;

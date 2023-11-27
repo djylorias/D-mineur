@@ -1,5 +1,7 @@
 package main.java.model;
 
+import main.java.model.Cells.Cell;
+
 /**
  * The map of the game
  * @since 0.6
@@ -18,6 +20,11 @@ public class Map {
      * The quantity of mines in the map.
      */
     private int mines_quantity;
+
+    /**
+     * The map; Composed of cells wich can be a mine, a number or a border.
+     */
+    private Cell[][] map = null;
 
     /**
      * The only constructor of this class
