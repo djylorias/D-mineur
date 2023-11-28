@@ -7,5 +7,13 @@ package main.java.model.Cells;
 public interface Cell {
     
     public void action();
+    public void discover();
+    public void flag();
+    public boolean isDiscovered();
+    public boolean isFLagged();
+    public int getX();
+    public int getY();
+    public int getMineCounter();
+    public void increaseMineCounter();
 
 }
