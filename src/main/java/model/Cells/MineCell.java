@@ -1,5 +1,8 @@
 package main.java.model.Cells;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import main.java.model.Map;
 
 /**
@@ -8,6 +11,7 @@ import main.java.model.Map;
  */
 public class MineCell extends BlankCell{
 
+    private static final ImageIcon ICON = new ImageIcon(ICON_FILES_PATH+"mine50.png");
     Map map = null;
 
     public MineCell(Map map, int x, int y){
@@ -17,6 +21,10 @@ public class MineCell extends BlankCell{
 
     public void action() {
         map.explosion();
+    }
+
+    public Icon getIcon(){
+        return ICON;
     }
 
 }

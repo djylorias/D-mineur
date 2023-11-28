@@ -11,8 +11,7 @@ public class NumberCell extends BlankCell {
     }
 
     public void action() {
-        discover();
-        notifyObservers();
+        
     }
     
 }

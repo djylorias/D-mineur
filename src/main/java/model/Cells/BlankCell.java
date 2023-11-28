@@ -23,6 +23,7 @@ public abstract class BlankCell extends Subject implements Cell {
      */
     public void discover(){
         discovered=true;
+        notifyObservers();
     }
 
     /**
@@ -30,6 +31,12 @@ public abstract class BlankCell extends Subject implements Cell {
      */
     public void flag(){
         flagged=true;
+        notifyObservers();
+    }
+
+    public void unflag(){
+        flagged=false;
+        notifyObservers();
     }
 
     public void increaseMineCounter(){

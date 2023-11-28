@@ -124,7 +124,9 @@ public class Map {
     }
 
     public void discoverEveryCells(){
-        
+        for(Cell[] line : map){
+            for(Cell cell : line) cell.discover();
+        }
     }
 
     public Cell getCell(Coordinate coord){
