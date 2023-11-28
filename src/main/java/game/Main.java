@@ -4,7 +4,7 @@ import main.java.model.Map;
 
 /**
  * The main class of the game.
- * @version 0.8
+ * @version 0.9
  * @since 0.6
  */
 public class Main {

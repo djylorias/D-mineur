@@ -16,7 +16,7 @@ public class MineCell extends BlankCell{
     }
 
     public void action() {
-        
+        map.explosion();
     }
 
 }

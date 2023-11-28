@@ -58,7 +58,7 @@ public class Map {
 
     private Cell generateCell(int x, int y){
         if(isBorder(x, y)) return new BorderCell(x, y);
-        else return new NumberCell(this, x, y);
+        else return new NumberCell(x, y);
     }
 
     private boolean isBorder(int x, int y){
@@ -119,13 +119,17 @@ public class Map {
         }
     }
 
+    public void explosion(){
+        discoverEveryCells();
+    }
+
+    public void discoverEveryCells(){
+        
+    }
+
     public Cell getCell(Coordinate coord){
         if(map==null) return null;
         else return map[coord.getX()][coord.getY()];
-    }
-
-    public void discovered(Coordinate coord){
-        map[coord.getX()][coord.getY()].discover();
     }
 
     public boolean isMine(Cell cell){
