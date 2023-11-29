@@ -24,11 +24,12 @@ public class CellView extends JButton implements Observer{
 
     public void update(Subject subj) {
         this.cell = (Cell) subj;
+        updateFlag();
+        updateDiscovered();
     }
 
     public void update(Subject subj, Object data) {
-        updateFlag();
-        updateDiscovered();
+
     }
 
     public void updateFlag(){
@@ -37,8 +38,7 @@ public class CellView extends JButton implements Observer{
     }
 
     public void updateDiscovered(){
-        if(cell.isDiscovered()){ 
-            cell.action();
+        if(cell.isDiscovered()){
             if(cell.getClass().getSimpleName().equals("MineCell")) setIcon(MINE);
             else setText(cell.getMineCounter()+"");
         }

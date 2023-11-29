@@ -5,7 +5,7 @@ import main.java.view.MapView;
 
 /**
  * The main class of the game.
- * @version 0.10
+ * @version 0.11
  * @since 0.6
  */
 public class Main {
